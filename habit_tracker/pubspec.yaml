@@ -1,0 +1,34 @@
+name: habit_tracker
+description: A habit tracking app with streak counter and rewards
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_core: ^2.15.0
+  firebase_auth: ^4.7.2
+  google_sign_in: ^6.1.4
+  cloud_firestore: ^4.8.4
+  provider: ^6.0.5
+  shared_preferences: ^2.2.0
+  flutter_local_notifications: ^15.1.0+1
+  intl: ^0.18.1
+  confetti: ^0.7.0
+  in_app_purchase: ^3.1.7
+  cupertino_icons: ^1.0.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.2
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/quotes.json
