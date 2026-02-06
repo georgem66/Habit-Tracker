@@ -75,9 +75,7 @@ class SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Create Account'),
-      ),
+      appBar: AppBar(title: const Text('Create Account')),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -174,10 +172,7 @@ class SignupScreenState extends State<SignupScreen> {
                       padding: const EdgeInsets.only(top: 8.0),
                       child: Text(
                         _errorMessage,
-                        style: const TextStyle(
-                          color: Colors.red,
-                          fontSize: 14,
-                        ),
+                        style: const TextStyle(color: Colors.red, fontSize: 14),
                         textAlign: TextAlign.center,
                       ),
                     ),

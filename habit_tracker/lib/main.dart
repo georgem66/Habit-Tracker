@@ -17,9 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => AuthService()),
-      ],
+      providers: [ChangeNotifierProvider(create: (_) => AuthService())],
       child: MaterialApp(
         title: 'Habit Tracker',
         theme: ThemeData(
@@ -33,14 +31,17 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: FutureBuilder(
-          future: Provider.of<AuthService>(context, listen: false).isUserLoggedIn(),
+          future: Provider.of<AuthService>(
+            context,
+            listen: false,
+          ).isUserLoggedIn(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Scaffold(
                 body: Center(child: CircularProgressIndicator()),
               );
             }
-            
+
             final bool isLoggedIn = snapshot.data ?? false;
             return isLoggedIn ? const HomeScreen() : const LoginScreen();
           },

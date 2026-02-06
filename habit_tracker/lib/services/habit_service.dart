@@ -21,12 +21,12 @@ class HabitService {
         .orderBy('createdAt', descending: true)
         .snapshots()
         .map((snapshot) {
-      return snapshot.docs.map((doc) {
-        Map<String, dynamic> data = doc.data();
-        data['id'] = doc.id;
-        return Habit.fromMap(data);
-      }).toList();
-    });
+          return snapshot.docs.map((doc) {
+            Map<String, dynamic> data = doc.data();
+            data['id'] = doc.id;
+            return Habit.fromMap(data);
+          }).toList();
+        });
   }
 
   // Create a new habit
@@ -43,16 +43,22 @@ class HabitService {
           .get();
 
       // Check if user is premium from the users collection
-      DocumentSnapshot userDoc = await _db.collection('users').doc(userId).get();
-      bool isPremium = (userDoc.data() as Map<String, dynamic>)['isPremium'] ?? false;
-      int maxHabits = (userDoc.data() as Map<String, dynamic>)['maxHabits'] ?? 3;
+      DocumentSnapshot userDoc = await _db
+          .collection('users')
+          .doc(userId)
+          .get();
+      bool isPremium =
+          (userDoc.data() as Map<String, dynamic>)['isPremium'] ?? false;
+      int maxHabits =
+          (userDoc.data() as Map<String, dynamic>)['maxHabits'] ?? 3;
 
       // Check if user has reached the maximum number of habits
       if (existingHabits.docs.length >= maxHabits) {
         throw Exception(
-            isPremium
-                ? "You've reached your habit limit. Please complete or remove an existing habit."
-                : "Free users can only track up to 3 habits. Upgrade to premium for more!");
+          isPremium
+              ? "You've reached your habit limit. Please complete or remove an existing habit."
+              : "Free users can only track up to 3 habits. Upgrade to premium for more!",
+        );
       }
 
       final newHabit = Habit(
@@ -144,7 +150,7 @@ class HabitService {
         completedDates: completedDates,
         currentStreak: habit.currentStreak,
       );
-      
+
       updatedHabit.calculateStreak();
 
       // Update the habit document
@@ -154,13 +160,15 @@ class HabitService {
           .collection('habits')
           .doc(habit.id)
           .update({
-        'completedDates': FieldValue.arrayUnion([Timestamp.now()]),
-        'currentStreak': updatedHabit.currentStreak,
-      });
+            'completedDates': FieldValue.arrayUnion([Timestamp.now()]),
+            'currentStreak': updatedHabit.currentStreak,
+          });
 
       // Update user points
       await _db.collection('users').doc(userId).update({
-        'points': FieldValue.increment(10), // Add 10 points for each completed habit
+        'points': FieldValue.increment(
+          10,
+        ), // Add 10 points for each completed habit
       });
     } catch (e) {
       if (kDebugMode) {

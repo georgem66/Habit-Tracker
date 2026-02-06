@@ -138,17 +138,15 @@ class HomeScreenState extends State<HomeScreen> {
               child: Center(
                 child: RichText(
                   text: TextSpan(
-                    style: DefaultTextStyle.of(context).style.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                    style: DefaultTextStyle.of(
+                      context,
+                    ).style.copyWith(fontWeight: FontWeight.bold),
                     children: [
                       const WidgetSpan(
                         child: Icon(Icons.stars, color: Colors.amber, size: 18),
                         alignment: PlaceholderAlignment.middle,
                       ),
-                      TextSpan(
-                        text: ' ${_userData!.points}',
-                      ),
+                      TextSpan(text: ' ${_userData!.points}'),
                     ],
                   ),
                 ),
@@ -158,9 +156,7 @@ class HomeScreenState extends State<HomeScreen> {
             icon: const Icon(Icons.account_circle),
             onPressed: () async {
               final result = await Navigator.of(context).push<bool>(
-                MaterialPageRoute(
-                  builder: (_) => const ProfileScreen(),
-                ),
+                MaterialPageRoute(builder: (_) => const ProfileScreen()),
               );
 
               // Refresh user data if profile was updated
@@ -301,11 +297,8 @@ class HabitCard extends StatelessWidget {
   final Habit habit;
   final VoidCallback onCompleted;
 
-  const HabitCard({
-    Key? key,
-    required this.habit,
-    required this.onCompleted,
-  }) : super(key: key);
+  const HabitCard({Key? key, required this.habit, required this.onCompleted})
+    : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -326,9 +319,9 @@ class HabitCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Theme.of(context)
-                        .primaryColor
-                        .withAlpha((255 * 0.1).toInt()),
+                    color: Theme.of(
+                      context,
+                    ).primaryColor.withAlpha((255 * 0.1).toInt()),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Icon(
@@ -361,8 +354,9 @@ class HabitCard extends StatelessWidget {
                           child: Text(
                             habit.description,
                             style: TextStyle(
-                              color:
-                                  Theme.of(context).textTheme.bodySmall?.color,
+                              color: Theme.of(
+                                context,
+                              ).textTheme.bodySmall?.color,
                             ),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 3,
@@ -383,8 +377,9 @@ class HabitCard extends StatelessWidget {
                             'Streak: ${habit.currentStreak} ${habit.currentStreak == 1 ? 'day' : 'days'}',
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
-                              color:
-                                  habit.currentStreak > 0 ? null : Colors.grey,
+                              color: habit.currentStreak > 0
+                                  ? null
+                                  : Colors.grey,
                             ),
                           ),
                         ],
@@ -457,43 +452,29 @@ class HabitCard extends StatelessWidget {
 class QuotePopup extends StatelessWidget {
   final Quote quote;
 
-  const QuotePopup({
-    Key? key,
-    required this.quote,
-  }) : super(key: key);
+  const QuotePopup({Key? key, required this.quote}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(
-              Icons.format_quote,
-              size: 40,
-              color: Colors.blueGrey,
-            ),
+            const Icon(Icons.format_quote, size: 40, color: Colors.blueGrey),
             const SizedBox(height: 16),
             Text(
               quote.text,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 18,
-                fontStyle: FontStyle.italic,
-              ),
+              style: const TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
             ),
             const SizedBox(height: 8),
             if (quote.author != null && quote.author!.isNotEmpty)
               Text(
                 '— ${quote.author}',
                 textAlign: TextAlign.right,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
           ],
         ),
@@ -511,10 +492,7 @@ class QuotePopup extends StatelessWidget {
 class PremiumBanner extends StatelessWidget {
   final VoidCallback onTap;
 
-  const PremiumBanner({
-    Key? key,
-    required this.onTap,
-  }) : super(key: key);
+  const PremiumBanner({Key? key, required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -526,24 +504,15 @@ class PremiumBanner extends StatelessWidget {
         color: Colors.amber.shade100,
         child: Row(
           children: [
-            const Icon(
-              Icons.star,
-              color: Colors.amber,
-            ),
+            const Icon(Icons.star, color: Colors.amber),
             const SizedBox(width: 8),
             const Expanded(
               child: Text(
                 'Upgrade to Premium for unlimited habits!',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
-            Icon(
-              Icons.arrow_forward_ios,
-              size: 16,
-              color: Colors.grey[600],
-            ),
+            Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey[600]),
           ],
         ),
       ),
