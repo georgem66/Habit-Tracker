@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:habit_tracker/models/quote.dart';
 import 'package:confetti/confetti.dart';
 
+/// A popup dialog that appears when a user completes a habit.
+/// Shows a motivational quote, points earned, and celebratory confetti animation.
 class QuotePopup extends StatefulWidget {
   final Quote quote;
+
+  /// The number of points awarded for completing this habit.
+  /// Default is 10 points, which is the standard reward for daily habit completion.
   final int points;
 
   const QuotePopup({super.key, required this.quote, this.points = 10});
