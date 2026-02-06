@@ -48,17 +48,17 @@ class Habit {
 
   bool isCompletedToday() {
     if (completedDates.isEmpty) return false;
-    
+
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
-    
+
     for (var date in completedDates) {
       final completedDate = DateTime(date.year, date.month, date.day);
       if (completedDate.isAtSameMomentAs(today)) {
         return true;
       }
     }
-    
+
     return false;
   }
 
@@ -71,7 +71,7 @@ class Habit {
 
     // Sort dates to ensure they are in chronological order
     final sortedDates = [...completedDates]..sort();
-    
+
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
     final yesterday = today.subtract(const Duration(days: 1));
@@ -80,7 +80,7 @@ class Habit {
     bool completedRecently = false;
     for (var date in sortedDates) {
       final completedDate = DateTime(date.year, date.month, date.day);
-      if (completedDate.isAtSameMomentAs(today) || 
+      if (completedDate.isAtSameMomentAs(today) ||
           completedDate.isAtSameMomentAs(yesterday)) {
         completedRecently = true;
         break;
@@ -95,12 +95,12 @@ class Habit {
     // Calculate consecutive days
     int streak = 1;
     DateTime checkDate = today;
-    
+
     // Start from today and go backwards
     while (true) {
       checkDate = checkDate.subtract(const Duration(days: 1));
       bool foundDate = false;
-      
+
       for (var date in sortedDates) {
         final completedDate = DateTime(date.year, date.month, date.day);
         if (completedDate.isAtSameMomentAs(checkDate)) {
@@ -109,12 +109,12 @@ class Habit {
           break;
         }
       }
-      
+
       if (!foundDate) {
         break;
       }
     }
-    
+
     currentStreak = streak;
   }
 }

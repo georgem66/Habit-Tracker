@@ -111,9 +111,9 @@ class LoginScreenState extends State<LoginScreen> {
                     'Habit Tracker',
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).primaryColor,
-                        ),
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).primaryColor,
+                    ),
                   ),
                   const SizedBox(height: 48),
 
@@ -165,10 +165,7 @@ class LoginScreenState extends State<LoginScreen> {
                       padding: const EdgeInsets.only(top: 8.0),
                       child: Text(
                         _errorMessage,
-                        style: const TextStyle(
-                          color: Colors.red,
-                          fontSize: 14,
-                        ),
+                        style: const TextStyle(color: Colors.red, fontSize: 14),
                         textAlign: TextAlign.center,
                       ),
                     ),

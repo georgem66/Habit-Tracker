@@ -51,9 +51,7 @@ class PremiumScreenState extends State<PremiumScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Premium Features'),
-      ),
+      appBar: AppBar(title: const Text('Premium Features')),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -72,19 +70,13 @@ class PremiumScreenState extends State<PremiumScreen> {
               const Text(
                 'Upgrade to Premium',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               const Text(
                 'Unlock the full potential of your habit tracking journey',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
+                style: TextStyle(fontSize: 16, color: Colors.grey),
               ),
               const SizedBox(height: 32),
 
@@ -191,19 +183,13 @@ class PremiumScreenState extends State<PremiumScreen> {
                           strokeWidth: 2,
                         ),
                       )
-                    : const Text(
-                        'Upgrade Now',
-                        style: TextStyle(fontSize: 18),
-                      ),
+                    : const Text('Upgrade Now', style: TextStyle(fontSize: 18)),
               ),
               const SizedBox(height: 8),
               const Text(
                 'Cancel anytime. 7-day free trial available.',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 12,
-                ),
+                style: TextStyle(color: Colors.grey, fontSize: 12),
               ),
               const SizedBox(height: 24),
             ],
@@ -232,10 +218,7 @@ class PremiumScreenState extends State<PremiumScreen> {
                     fontSize: 16,
                   ),
                 ),
-                Text(
-                  description,
-                  style: const TextStyle(color: Colors.grey),
-                ),
+                Text(description, style: const TextStyle(color: Colors.grey)),
               ],
             ),
           ),

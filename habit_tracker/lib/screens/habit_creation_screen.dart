@@ -4,10 +4,7 @@ import 'package:habit_tracker/services/habit_service.dart';
 class HabitCreationScreen extends StatefulWidget {
   final int maxHabits;
 
-  const HabitCreationScreen({
-    super.key,
-    required this.maxHabits,
-  });
+  const HabitCreationScreen({super.key, required this.maxHabits});
 
   @override
   HabitCreationScreenState createState() => HabitCreationScreenState();
@@ -60,9 +57,7 @@ class HabitCreationScreenState extends State<HabitCreationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Create New Habit'),
-      ),
+      appBar: AppBar(title: const Text('Create New Habit')),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
@@ -131,10 +126,7 @@ class HabitCreationScreenState extends State<HabitCreationScreen> {
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: Text(
                       _errorMessage,
-                      style: const TextStyle(
-                        color: Colors.red,
-                        fontSize: 14,
-                      ),
+                      style: const TextStyle(color: Colors.red, fontSize: 14),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -158,10 +150,7 @@ class HabitCreationScreenState extends State<HabitCreationScreen> {
                 const SizedBox(height: 32),
                 const Text(
                   'Need ideas? Try these habits:',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
                 const SizedBox(height: 8),
                 _buildHabitIdea(

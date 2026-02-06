@@ -5,17 +5,11 @@ class Quote {
   Quote({required this.text, this.author});
 
   factory Quote.fromMap(Map<String, dynamic> data) {
-    return Quote(
-      text: data['text'],
-      author: data['author'],
-    );
+    return Quote(text: data['text'], author: data['author']);
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      'text': text,
-      'author': author,
-    };
+    return {'text': text, 'author': author};
   }
 
   @override

@@ -12,7 +12,7 @@ class QuoteService {
     try {
       final String data = await rootBundle.loadString('assets/quotes.json');
       final List<dynamic> jsonData = json.decode(data);
-      
+
       _quotes = jsonData.map((json) => Quote.fromMap(json)).toList();
     } catch (e) {
       // If error loading quotes, use default quotes
@@ -31,7 +31,7 @@ class QuoteService {
     if (_quotes.isEmpty) {
       return Quote(text: 'Small steps beat big dreams.');
     }
-    
+
     int index = _random.nextInt(_quotes.length);
     return _quotes[index];
   }
